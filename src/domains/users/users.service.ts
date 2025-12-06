@@ -12,23 +12,25 @@ export class UsersService {
         private usersRepository: Repository<User>,
     ) { }
 
-    create(createUserDto: CreateUserDto) {
-        // TODO: implement create logic
+    async create(createUserDto: CreateUserDto): Promise<User> {
+        const user = this.usersRepository.create(createUserDto);
+        return this.usersRepository.save(user);
     }
 
-    findAll() {
-        // TODO: implement findAll logic
+    async findAll(): Promise<User[]> {
+        return this.usersRepository.find();
     }
 
-    findOne(id: string) {
-        // TODO: implement findOne logic
+    async findOne(id: string): Promise<User | null> {
+        return this.usersRepository.findOne({ where: { id } });
     }
 
-    update(id: string, updateUserDto: UpdateUserDto) {
-        // TODO: implement update logic
+    async update(id: string, updateUserDto: UpdateUserDto): Promise<User | null> {
+        await this.usersRepository.update(id, updateUserDto);
+        return this.findOne(id);
     }
 
-    remove(id: string) {
-        // TODO: implement remove logic
+    async remove(id: string): Promise<void> {
+        await this.usersRepository.delete(id);
     }
 }
