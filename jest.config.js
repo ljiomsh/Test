@@ -6,9 +6,13 @@ module.exports = {
         '^.+\\.(t|j)s$': 'ts-jest',
     },
     collectCoverageFrom: [
-        '**/*.(t|j)s',
+        '**/*.ts',
+        '!**/*.spec.ts',
+        '!**/node_modules/**',
+        '!**/dist/**',
     ],
     coverageDirectory: '../coverage',
+    coverageReporters: ['text', 'text-summary', 'html', 'lcov'],
     testEnvironment: 'node',
     roots: ['<rootDir>', '<rootDir>/../test'],
     moduleNameMapper: {

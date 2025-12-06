@@ -1,3 +1,7 @@
+/**
+ * Points Service
+ * Created: 2025-12-06
+ */
 import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
